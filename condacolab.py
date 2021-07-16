@@ -22,10 +22,6 @@ from distutils.spawn import find_executable
 
 from IPython import get_ipython
 
-try:
-    import google.colab
-except ImportError:
-    raise RuntimeError("This module must ONLY run as part of a Colab notebook!")
 
 
 __version__ = "0.1.3"
