@@ -1,11 +1,11 @@
 """
-condacolab
-Install Conda and friends on Google Colab, easily
+condakaggle
+Install Conda and friends on Kaggle, easily
 
 Usage:
 
->>> import condacolab
->>> condacolab.install()
+>>> import condakaggle
+>>> condakaggle.install()
 
 For more details, check the docstrings for ``install_from_url()``.
 """
@@ -22,14 +22,10 @@ from distutils.spawn import find_executable
 
 from IPython import get_ipython
 
-try:
-    import google.colab
-except ImportError:
-    raise RuntimeError("This module must ONLY run as part of a Colab notebook!")
 
 
-__version__ = "0.1.3"
-__author__ = "Jaime Rodríguez-Guerra <jaimergp@users.noreply.github.com>"
+__version__ = "0.1"
+__author__ = "Forkbabu <forkbabu@users.noreply.github.com>"
 
 
 PREFIX = "/usr/local"
@@ -90,11 +86,11 @@ def install_from_url(
         text=True,
     )
     os.unlink(installer_fn)
-    with open("condacolab_install.log", "w") as f:
+    with open("condakaggle_install.log", "w") as f:
         f.write(task.stdout)
     assert (
         task.returncode == 0
-    ), "💥💔💥 The installation failed! Logs are available at `/content/condacolab_install.log`."
+    ), "💥💔💥 The installation failed! Logs are available at `/kaggle/working/condakaggle_install.log`."
 
     print("📌 Adjusting configuration...")
     cuda_version = ".".join(os.environ.get("CUDA_VERSION", "*.*.*").split(".")[:2])
