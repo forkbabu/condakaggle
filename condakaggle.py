@@ -86,7 +86,7 @@ def install_from_url(
         text=True,
     )
     os.unlink(installer_fn)
-    with open("condacolab_install.log", "w") as f:
+    with open("condakaggle_install.log", "w") as f:
         f.write(task.stdout)
     assert (
         task.returncode == 0
